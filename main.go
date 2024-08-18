@@ -22,7 +22,8 @@ func main() {
 		fmt.Println("i =", 100/i)
 	}
 
-	errorHandle("sample.txt")
+	//errorHandle("sample.txt")
+	compare()
 }
 
 //TIP See GoLand help at <a href="https://www.jetbrains.com/help/go/">jetbrains.com/help/go/</a>.
