@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"os"
 )
@@ -43,4 +44,35 @@ func errorHandle(fname string) error {
 	}
 
 	return nil
+}
+
+// ErrNotFound センチネルエラー
+// 慣習的に命名はErrXXX
+var ErrNotFound = errors.New("not found")
+
+// エラーのラップ
+// errors.Unwrap()でラップされた中身を取り出せる
+func wrapError(err error) error {
+	return fmt.Errorf("%w", err)
+}
+
+// FormatError 独自エラー
+// 慣習的に命名はXXXError
+type FormatError struct {
+	Exp string
+	Err error
+}
+
+func (e FormatError) Error() string {
+	return fmt.Sprintf("%s: %s", e.Exp, e.Err)
+}
+
+func (e FormatError) Unwrap() error {
+	return e.Err
+}
+
+// 複数エラーの集約
+func aggregateError(errs []error) error {
+	// Since Go 1.20
+	return errors.Join(errs...)
 }
