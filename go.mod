@@ -1,1 +1,1 @@
-module go-playground
+module go-journey
