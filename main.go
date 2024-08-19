@@ -24,6 +24,8 @@ func main() {
 
 	//errorHandle("sample.txt")
 	compare()
+
+	printErr("Error log test")
 }
 
 //TIP See GoLand help at <a href="https://www.jetbrains.com/help/go/">jetbrains.com/help/go/</a>.
