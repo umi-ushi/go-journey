@@ -43,7 +43,7 @@ func errorHandle(fname string) error {
 
 	_, err = f.WriteAt([]byte("sample"), 0)
 	if err != nil {
-		return err
+		return fmt.Errorf("can not write file %s: %w", fname, err)
 	}
 
 	return nil
